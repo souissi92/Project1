@@ -1,10 +1,10 @@
-@description('Username for the Virtual Machine.')
-param adminUsername string =
+//@description('Username for the Virtual Machine.')
+///param adminUsername string =
 
-@description('Password for the Virtual Machine.')
-@minLength(12)
-@secure()
-param adminPassword string
+///@description('Password for the Virtual Machine.')
+//@minLength(12)
+//@secure()
+///param adminPassword string
 @description('The Windows version for the VM. This will pick a fully patched image of this given Windows version.')
 @allowed([
   '2016-datacenter-gensecond'
@@ -147,8 +147,8 @@ resource vm 'Microsoft.Compute/virtualMachines@2022-03-01' = {
     }
     osProfile: {
       computerName: vmName
-      adminUsername: Souissi
-      adminPassword: adminPassword123++
+      adminUsername: 'Souissi'
+      adminPassword: 'adminPassword123++'
     }
     storageProfile: {
       imageReference: {
