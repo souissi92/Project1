@@ -8,6 +8,7 @@ permissions:
 
 env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
+    ENVIRONMENT: nonprod
     
 
 jobs:
@@ -25,5 +26,4 @@ jobs:
         deploymentName: ${{ github.run_number }}
         resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
         template: ./deploy/main.bicep
-        adminUsername: 'Souissi'
-        adminPassword: 'adminPassword123++'
+        parameters: environmentType=${{ env.ENVIRONMENT }}
