@@ -17,34 +17,7 @@ var appServicePlanName = 'toy-website-plan'
 var toyManualsStorageAccountName = 'toyweb${resourceNameSuffix}'
 
 // Define the SKUs for each component based on the environment type.
-var environmentConfigurationMap = {
-  nonprod: {
-    appServicePlan: {
-      sku: {
-        name: 'F1'
-        capacity: 1
-      }
-    }
-    toyManualsStorageAccount: {
-      sku: {
-        name: 'Standard_LRS'
-      }
-    }
-  }
-  prod: {
-    appServicePlan: {
-      sku: {
-        name: 'S1'
-        capacity: 2
-      }
-    }
-    toyManualsStorageAccount: {
-      sku: {
-        name: 'Standard_ZRS'
-      }
-    }
-  }
-}
+
 
 var toyManualsStorageAccountConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${toyManualsStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${toyManualsStorageAccount.listKeys().keys[0].value}'
 
