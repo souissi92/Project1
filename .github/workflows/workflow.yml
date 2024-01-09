@@ -1,35 +1,25 @@
-name: deploy-toy-website
-
+name: Run Azure Login with OpenID Connect and PowerShell
 on: [push]
 
 permissions:
-  id-token: write
-  contents: read
+      id-token: write
+      contents: read
+      
+jobs: 
+  Windows-latest:
+      runs-on: windows-latest
+      steps:
+        - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+          uses: azure/login@v1
+          with:
+            client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
+            enable-AzPSSession: true
 
-env:
-    AZURE_RESOURCEGROUP_NAME: ToyWebsite
-    
-
-jobs:
-  deploy:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: azure/powershell@v1
-      with :
-        inlineScript: |
-        resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
-    - uses: azure/login@v1
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
-        enable-AzPSSession: true
-    
-            
-    - uses: azure/arm-deploy@v1
-      with:
-        deploymentName: ${{ github.run_number }}
-        resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
-        template: ./deploy/main.bicep
-        parameters: environmentType=${{ env.ENVIRONMENT }}
+        - name: 'Get resource group with PowerShell action'
+          uses: azure/powershell@v1
+          with:
+             inlineScript: |
+               Get-AzResourceGroup
+             azPSVersion: "latest"
