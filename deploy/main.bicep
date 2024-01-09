@@ -6,7 +6,7 @@ param location string = resourceGroup().location
   'nonprod'
   'prod'
 ])
-param environmentType string
+param environmentType string = 'nonprod'
 
 @description('A unique suffix to add to resource names that need to be globally unique.')
 @maxLength(13)
