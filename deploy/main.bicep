@@ -1,12 +1,12 @@
 @description('The Azure region into which the resources should be deployed.')
 param location string = resourceGroup().location
 
-@description('The type of environment. This must be nonprod or prod.')
-@allowed([
-  'nonprod'
-  'prod'
-])
-param environmentType string
+//@description('The type of environment. This must be nonprod or prod.')
+//@allowed([
+  //'nonprod'
+  //'prod'
+//])
+//param environmentType string
 
 @description('A unique suffix to add to resource names that need to be globally unique.')
 @maxLength(13)
@@ -51,7 +51,7 @@ var toyManualsStorageAccountConnectionString = 'DefaultEndpointsProtocol=https;A
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: appServicePlanName
   location: location
-  sku: environmentConfigurationMap[environmentType].appServicePlan.sku
+  sku:'Standard_ZRS'
 }
 
 resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
@@ -75,5 +75,5 @@ resource toyManualsStorageAccount 'Microsoft.Storage/storageAccounts@2022-09-01'
   name: toyManualsStorageAccountName
   location: location
   kind: 'StorageV2'
-  sku: environmentConfigurationMap[environmentType].toyManualsStorageAccount.sku
+  sku: 'Standard_ZRS'
 }
