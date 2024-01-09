@@ -1,5 +1,5 @@
 @description('Username for the Virtual Machine.')
-param adminUsername string
+param adminUsername string =
 
 @description('Password for the Virtual Machine.')
 @minLength(12)
@@ -147,8 +147,8 @@ resource vm 'Microsoft.Compute/virtualMachines@2022-03-01' = {
     }
     osProfile: {
       computerName: vmName
-      adminUsername: adminUsername
-      adminPassword: adminPassword
+      adminUsername: Souissi
+      adminPassword: adminPassword123++
     }
     storageProfile: {
       imageReference: {
