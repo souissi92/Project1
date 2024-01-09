@@ -8,18 +8,24 @@ permissions:
 
 env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
-    ENVIRONMENT: nonprod
+    
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     - uses: azure/login@v1
       with:
-        client-id: c468e88b-8e5d-4e9b-8ff0-d9f12a0cf3a1
-        tenant-id: 39a6cc39-c612-44c3-be6c-e6d4f3abbcf8
-        subscription-id: 373828f5-758e-442f-8758-b846807b96f8
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
+        enable-AzPSSession: true
+    - uses: azure/powershell@v1
+      with :
+        inlineScript: |
+        resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
+            
     - uses: azure/arm-deploy@v1
       with:
         deploymentName: ${{ github.run_number }}
