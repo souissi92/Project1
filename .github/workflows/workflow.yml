@@ -1,4 +1,4 @@
-name: deploy-VM
+name: deploy-VMa
 on:
   push:
     branches:
