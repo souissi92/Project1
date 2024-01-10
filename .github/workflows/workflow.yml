@@ -33,4 +33,4 @@ jobs:
         template: ./deploy/main.bicep
         parameters: 
           adminUsername=${{ env.adminUsername }}
-          adminPassword=${{ env.adminUsername }}
+          adminPassword=${{ env.adminPassword }}
