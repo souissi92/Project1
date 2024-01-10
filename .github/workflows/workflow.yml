@@ -1,6 +1,4 @@
-name: deploy-toy-website
-concurrency: toy-company
-
+name: deploy-VM
 on:
   push:
     branches:
@@ -14,7 +12,8 @@ permissions:
 
 env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
-    ENVIRONMENT: nonprod
+    adminUsername: ELgonuserName
+    adminPassword: minPassword002==
     
 
 jobs:
@@ -32,4 +31,6 @@ jobs:
         deploymentName: ${{ github.run_number }}
         resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
         template: ./deploy/main.bicep
-        parameters: environmentType=${{ env.ENVIRONMENT }}
+        parameters: 
+          adminUsername=${{ env.adminUsername }}
+          adminPassword=${{ env.adminUsername }}
