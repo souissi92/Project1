@@ -4,10 +4,10 @@ concurrency: toy-company
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'deploy/**'
-      
+
 permissions:
   id-token: write
   contents: read
