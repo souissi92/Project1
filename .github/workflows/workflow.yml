@@ -14,6 +14,7 @@ env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
     adminUsername: elgonusername
     adminPassword: OurPmmmw0rd1998
+    securityType: Standard
     
 
 jobs:
@@ -34,3 +35,4 @@ jobs:
         parameters:
           adminUsername=${{ env.adminUsername }}
           adminPassword=${{ env.adminPassword }}
+          securityType=${{env.securityType}}
