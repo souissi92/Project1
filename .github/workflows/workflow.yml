@@ -16,6 +16,7 @@ env:
     adminPassword: OurPmmmw0rd1998
     securityType: Standard
     VmName: firstVM
+    vmSize: Standard_D2s_v5
     
 
 jobs:
@@ -37,4 +38,5 @@ jobs:
           adminUsername=${{ env.adminUsername }}
           adminPassword=${{ env.adminPassword }}
           securityType=${{env.securityType}}
-          VmName=${{env.VmName}}
+          vmName=${{env.VmName}}
+          vmSize=${{env.vmSize}}
