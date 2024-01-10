@@ -1,13 +1,18 @@
 name: deploy-VMa
-on: [workflow_dispatch]
 
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'github/workflows**'
 permissions:
   id-token: write
   contents: read
 
 env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
-    adminUsername: OurPmmmw0rd1998
+    adminUsername: elgonusername
     adminPassword: OurPmmmw0rd1998
     
 
