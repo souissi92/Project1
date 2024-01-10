@@ -15,6 +15,7 @@ env:
     adminUsername: elgonusername
     adminPassword: OurPmmmw0rd1998
     securityType: Standard
+    VmName: firstVM
     
 
 jobs:
@@ -36,3 +37,4 @@ jobs:
           adminUsername=${{ env.adminUsername }}
           adminPassword=${{ env.adminPassword }}
           securityType=${{env.securityType}}
+          VmName=${{env.VmName}}
