@@ -13,7 +13,7 @@ permissions:
 env:
     AZURE_RESOURCEGROUP_NAME: ToyWebsite
     adminUsername: ELgonuserName
-    adminPassword: minPassword002==
+    adminPassword: kDT1t9j7:9/
     
 
 jobs:
