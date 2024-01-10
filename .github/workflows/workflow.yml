@@ -1,10 +1,5 @@
 name: deploy-VMa
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - 'deploy/**'
+on: [workflow_dispatch]
 
 permissions:
   id-token: write
